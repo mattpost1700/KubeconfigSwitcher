@@ -1,5 +1,6 @@
 from time import sleep
 
+
 def start():
     print("I started!")
     sleep(5)
