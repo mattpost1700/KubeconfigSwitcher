@@ -46,13 +46,13 @@ def get_stored_kube_configs(
 
     # remove extra files in dir from list
     list_of_kube_configs = []
-    for file in list_of_files:  # config not here somehow
-        has_keyword = must_include_keyword is not None and must_include_keyword in file
-        if file not in NO_READ_FILES and has_keyword:
+    for file_name in list_of_files:  # config not here somehow
+        has_keyword = must_include_keyword is not None and must_include_keyword in file_name
+        if file_name not in NO_READ_FILES and has_keyword:
             try:
-                with open(dir_path / file, "r", encoding="utf8") as kube_config_file:
+                with open(dir_path / file_name, "r", encoding="utf8") as kube_config_file:
                     config_data = kube_config_file.read()
-                    tmp_kc = KubeConfig(name=kube_config_file, file_contents=config_data)
+                    tmp_kc = KubeConfig(name=file_name, file_contents=config_data)
                     list_of_kube_configs.append(tmp_kc)
             except Exception as kube_e:
                 raise FileHandlerReadingException("Failed to read kube config file!", kube_e)
