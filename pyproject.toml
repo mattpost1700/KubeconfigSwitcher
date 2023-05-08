@@ -1,20 +1,12 @@
 [tool.poetry]
 name = "Kubeconfig Switcher"
 description = "An app to switch kube config files."
-authors = [
-    "Matthew Post",
-]
-maintainers = [
-    "Frank Smith",
-]
+authors = ["Matthew Post"]
+maintainers = ["Frank Smith"]
 license = "MIT"
 readme = "README.md"
-packages = [
-    { include = "kubeconfig_switcher", from = "src" }
-]
-include = [
-    { path = "tests" }
-]
+packages = [{ include = "kubeconfig_switcher", from = "src" }]
+include = [{ path = "tests" }]
 version = "0.1.0-beta"
 
 [tool.poetry.dependencies]
@@ -26,6 +18,9 @@ pre-commit = "^2.6"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
+
+[tool.pytest.ini_options]
+pythonpath = "kubeconfig_switcher"
 
 # only used in github actions
 [tool.poetry.group.github-actions]
