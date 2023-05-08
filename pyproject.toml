@@ -19,9 +19,6 @@ pre-commit = "^2.6"
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
 
-[tool.pytest.ini_options]
-pythonpath = "kubeconfig_switcher"
-
 # only used in github actions
 [tool.poetry.group.github-actions]
 optional = true
