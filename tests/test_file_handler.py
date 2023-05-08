@@ -2,12 +2,12 @@ from unittest import mock
 
 import pytest
 
-from src import file_handler
-from src.data_models import KubeConfig
+from src.kubeconfig_switcher import file_handler
+from src.kubeconfig_switcher.data_models import KubeConfig
 
 
 def test_get_stored_kube_configs():
-    with mock.patch("src.file_handler.os.listdir", return_value=["config", "config2", "thing"]):
+    with mock.patch("src.kubeconfig_switcher.file_handler.os.listdir", return_value=["config", "config2", "thing"]):
         with mock.patch("builtins.open", mock.mock_open(read_data="config_data")):
             ret_val = file_handler.get_stored_kube_configs()
 

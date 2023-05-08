@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kubeconfig_switcher"
+authors = [
+    {name = "Matthew Post"},
+]
+description = "An application to switch kube config files"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "requests",
+    "pydantic",
+    'importlib-metadata; python_version<"3.9"',
+]
+dynamic = ["version"]
