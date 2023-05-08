@@ -5,6 +5,7 @@ __pycache__/
 /.venv
 /kubeconfig_switcher.egg-info
 
+/src/kubeconfig_switcher.egg-info
 
 # Distribution / packaging
 bin/
@@ -34,4 +35,3 @@ coverage.xml
 
 # Translations
 *.mo
-
