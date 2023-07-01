@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-from .data_models import KubeConfig
+from data_models import KubeConfig
 
 DEFAULT_KUBE_DIR = Path.home() / ".kube"
 KUBE_CONFIG_FILE_NAME = "config"
@@ -42,7 +42,7 @@ def get_stored_kube_configs(
         list[KubeConfig]: All saved kube config files
     """
     list_of_files = os.listdir(dir_path)
-    print(list_of_files)
+    # print(list_of_files)
 
     # remove extra files in dir from list
     list_of_kube_configs = []
@@ -76,3 +76,19 @@ def set_kube_config(kube_config: KubeConfig, dir_path: Path = DEFAULT_KUBE_DIR):
             main_kube_config_file.write(kube_config.file_contents)
     except Exception as kube_e:
         raise FileHandlerWritingException("Failed to write kube config file!", kube_e)
+
+def get_kube_config_by_name(kube_config_name: str) -> KubeConfig | None:
+    """
+    Gets the machine KubeConfig
+
+    Args:
+        kube_config_name (str): A KubeConfig name
+
+    Returns:
+        KubeConfig | None: The matching KubeConfig
+    """
+    for kube_config in get_stored_kube_configs():
+        if kube_config_name == kube_config.name:
+            return kube_config
+    
+    return None
